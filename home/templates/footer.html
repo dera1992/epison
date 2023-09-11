@@ -1,0 +1,102 @@
+{% load static %}
+
+    <footer class="rbt-footer footer-style-1">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row row--15 mt_dec--30">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--30">
+                        <div class="footer-widget">
+                            <div class="logo">
+                                <a href="{% url "home:home" %}">
+                                    <img src="{% static "assets/images/logo/logo.png" %}" alt="Epison">
+                                </a>
+                            </div>
+
+                            <p class="description mt--20">The Epidemiological Society of Nigeria was registered in 2010 and currently...
+                            </p>
+
+                            <div class="contact-btn mt--30">
+                                <a class="rbt-btn hover-icon-reverse btn-border-gradient radius-round" href="{% url "info:about_us" %}">
+                                    <div class="icon-reverse-wrapper">
+                                        <span class="btn-text">About Us</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--30">
+                        <div class="footer-widget">
+                            <h5 class="ft-title">Our Company</h5>
+                            <ul class="ft-link">
+                                <li>
+                                    <a href="{% url "info:contact" %}">Contact Us</a>
+                                </li>
+                                <li>
+                                    <a href="{% url "blog:blog_list" %}">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="{% url "conference:event-list" %}">Events</a>
+                                </li>
+                                <li>
+                                    <a href="{% url "conference:event-gallery" %}">Gallery</a>
+                                </li>
+                                <li>
+                                    <a href="{% url "abstract:abstract-list" %}">Abstract</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--30">
+                        <div class="footer-widget">
+                            <h5 class="ft-title">Get Contact</h5>
+                            <ul class="ft-link">
+                                <li><span>Phone:</span> <a href="#">(+234)8033885447</a></li>
+                                <li><span>E-mail:</span> <a href="mailto:temitopesegun@yahoo.com">temitopesegun@yahoo.com</a></li>
+                                <li><span>Location:</span> Abuja, Nigeria</li>
+                            </ul>
+                            <ul class="social-icon social-default icon-naked justify-content-start mt--20">
+                                <li><a href="https://www.facebook.com/">
+                                        <i class="feather-facebook"></i>
+                                    </a>
+                                </li>
+                                <li><a href="https://www.twitter.com/">
+                                        <i class="feather-twitter"></i>
+                                    </a>
+                                </li>
+                                <li><a href="https://www.instagram.com/">
+                                        <i class="feather-instagram"></i>
+                                    </a>
+                                </li>
+                                <li><a href="https://www.linkdin.com/">
+                                        <i class="feather-linkedin"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer aera -->
+    <div class="rbt-separator-mid">
+        <div class="container">
+            <hr class="rbt-separator m-0">
+        </div>
+    </div>
+    <!-- Start Copyright Area  -->
+    <div class="copyright-area copyright-style-1 ptb--20">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-12">
+                    <p style="text-align:center;">Copyright © {%now "Y"%} Rockflint. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Copyright Area  -->

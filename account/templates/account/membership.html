@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}Event Gallery{% endblock %}
+
+{% block content %}
+   <!-- Start breadcrumb Area -->
+    <div class="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-inner text-center">
+                        <h6 class="title">BECOME A MEMBER / Benefits! </h6>
+                        <ul class="page-list">
+                            <li class="rbt-breadcrumb-item"><a href="{% url "home:home" %}">Home</a></li>
+                            <li>
+                                <div class="icon-right"><i class="feather-chevron-right"></i></div>
+                            </li>
+                            <li class="rbt-breadcrumb-item active">Member/Benefit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumb Area -->
+    <div class="rbt-list-style-area bg-color-white rbt-section-gap">
+        <div class="container">
+
+            <div class="row g-5 pt--60">
+                <!-- Start List Style  -->
+                <div class="col-lg-12">
+                    <div class="rbt-feature-wrapper">
+                        <div class="rbt-feature feature-style-2">
+                            <div class="feature-content">
+                                <h5 style="text-align: center">BENEFITS OF MEMBERSHIP OF THE EPIDEMIOLOGICAL SOCIETY OF NIGERIA</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End List Style  -->
+                <!-- Start List Style  -->
+                <div class="col-lg-6">
+                    <div class="rbt-feature-wrapper">
+                        <div class="rbt-feature feature-style-2">
+                            <div class="icon bg-pink-opacity">
+                                <i class="feather-heart"></i>
+                            </div>
+                            <div class="feature-content">
+                                <p class="feature-description">Joint membership of Society of Public Health Professionals of Nigeria (SPHPN)</p>
+                            </div>
+                        </div>
+
+                        <div class="rbt-feature feature-style-2">
+                            <div class="icon bg-primary-opacity">
+                                <i class="feather-book"></i>
+                            </div>
+                            <div class="feature-content">
+                                <p class="feature-description">Membership of EPiSON automatically confers on you the membership of the International Epidemiological Association (IEA).</p>
+                            </div>
+                        </div>
+
+                        <div class="rbt-feature feature-style-2">
+                            <div class="icon bg-coral-opacity">
+                                <i class="feather-monitor"></i>
+                            </div>
+                            <div class="feature-content">
+                                <p class="feature-description">Participation in EPiSON, IEA and regional conferences or any other programmes and events organized by them</p>
+                            </div>
+                        </div>
+                        <div class="rbt-feature feature-style-2">
+                            <div class="icon bg-primary-opacity">
+                                <i class="feather-book"></i>
+                            </div>
+                            <div class="feature-content">
+                                <p class="feature-description">Membership provides a forum to interact and share experiences with other epidemiologists working in Nigeria and globally.</p>
+                            </div>
+                        </div>
+
+                        <div class="rbt-feature feature-style-2">
+                            <div class="icon bg-coral-opacity">
+                                <i class="feather-monitor"></i>
+                            </div>
+                            <div class="feature-content">
+                                <p class="feature-description">Provides ample opportunities for career and professional capacity development from EPiSON organized workshops and international conferences</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End List Style  -->
+
+                <!-- Start List Style  -->
+                <div class="col-lg-6">
+                    <div class="rbt-feature-wrapper">
+                        <div class="rbt-feature feature-style-2">
+                            <div class="icon bg-pink-opacity">
+                                <i class="feather-heart"></i>
+                            </div>
+                            <div class="feature-content">
+                                <p class="feature-description">You are eligible to vote and be voted for at EPiSON Annual General Meetings.</p>
+                            </div>
+                        </div>
+
+                        <div class="rbt-feature feature-style-2">
+                            <div class="icon bg-primary-opacity">
+                                <i class="feather-book"></i>
+                            </div>
+                            <div class="feature-content">
+                                <p class="feature-description"> As IEA member, you are eligible to attend her conferences and aspire to
+                                    elective offices among other privileges accorded to all members</p>
+                            </div>
+                        </div>
+
+                        <div class="rbt-feature feature-style-2">
+                            <div class="icon bg-coral-opacity">
+                                <i class="feather-monitor"></i>
+                            </div>
+                            <div class="feature-content">
+                                <p class="feature-description">Benefit from newsletters, journals and other publications
+                                    by EPiSON and its affiliate organizations like IEA, NCDC and AEA</p>
+                            </div>
+                        </div>
+                        <div class="rbt-feature feature-style-2">
+                            <div class="icon bg-primary-opacity">
+                                <i class="feather-book"></i>
+                            </div>
+                            <div class="feature-content">
+                                <p class="feature-description"> Participation in collaborative research with other members of
+                                    EPiSON and IEA at subnational, national and global levels</p>
+                            </div>
+                        </div>
+
+                        <div class="rbt-feature feature-style-2">
+                            <div class="icon bg-coral-opacity">
+                                <i class="feather-monitor"></i>
+                            </div>
+                            <div class="feature-content">
+                                <p class="feature-description">Contribute meaningfully to the practice of Epidemiology in Nigeria.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End List Style  -->
+                <!-- End List Style  -->
+            </div>
+             <div class="row g-5 pt--60">
+                 <!-- Start List Style  -->
+                <div class="col-lg-6">
+                    <div class="rbt-feature-wrapper">
+                        <div class="rbt-feature feature-style-2">
+                            <div class="feature-content">
+                                <h6 class="feature-title">Annual Membership fee: N20,000 (for Joint EPiSON and IEA)</h6>
+                                 <h6 class="feature-title">N15,000 (Early Career Epidemiologists)</h6>
+                                 <h6 class="feature-title">Account name: Epidemiological Society Of Nigeria</h6>
+                                 <h6 class="feature-title">Account details: Zenith bank (current) 1227164584</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End List Style  -->
+
+                <!-- Start List Style  -->
+                {% if user.is_authenticated %}
+                    <div class="col-lg-6">
+                        <div class="rbt-feature-wrapper">
+                            <div class="rbt-feature feature-style-2">
+                                <div class="feature-content">
+{#                                    <a class="rbt-btn rbt-switch-btn rbt-switch-y" href="{% url "register" %}">#}
+{#                                        <span data-text="Become a member">Register</span>#}
+{#                                    </a>#}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-lg-6">
+                    <div class="rbt-feature-wrapper">
+                        <div class="rbt-feature feature-style-2">
+                            <div class="feature-content">
+                                <a class="rbt-btn rbt-switch-btn rbt-switch-y" href="{% url "register" %}">
+                                    <span data-text="Become a member">Register</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <!-- End List Style  -->
+             </div>
+        </div>
+    </div>
+    <br> <br>
+{% endblock %}
+

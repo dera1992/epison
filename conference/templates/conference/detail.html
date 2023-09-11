@@ -1,0 +1,411 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Event Detail{% endblock %}
+
+{% block content %}
+ <!-- Start breadcrumb Area -->
+    <div class="rbt-breadcrumb-default rbt-breadcrumb-style-3">
+        <div class="breadcrumb-inner">
+            <img src="{% static "assets/images/bg/bg-image-10.jpg" %}" alt="Education Images">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="content">
+                        <div class="content text-start">
+                            <ul class="page-list">
+                                <li class="rbt-breadcrumb-item"><a href="{% url "home:home" %}">Home</a></li>
+                                <li>
+                                    <div class="icon-right"><i class="feather-chevron-right"></i></div>
+                                </li>
+                                <li class="rbt-breadcrumb-item active">Conference</li>
+                            </ul>
+                            <h2 class="title">{{ event.title }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumb Area -->
+
+    <div class="rbt-course-details-area rbt-section-gap">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-8">
+                    <div class="course-details-content">
+
+                        <div class="rbt-feature-box rbt-shadow-box thuumbnail">
+                            {% if event.thumbnail %}
+                                <img src="{{ event.thumbnail.url }}" class="w-100"  alt="Card image" />
+                            {% endif%}
+                        </div>
+
+                        <div class="rbt-feature-box rbt-shadow-box mt--60">
+                            <div class="row g-5">
+                                <!-- Start Feture Box  -->
+                                <div class="col-lg-12">
+                                    <div class="section-title">
+                                        <h6 class="title mb--20">{{ event.address }}, {{ event.state }}</h6>
+                                    </div>
+                                </div>
+                                <!-- End Feture Box  -->
+
+                            </div>
+                        </div>
+
+                        <!-- Start Course Feature Box  -->
+                        <div class="rbt-feature-box rbt-shadow-box mt--60">
+                            <div class="row g-5">
+                                <!-- Start Feture Box  -->
+                                <div class="col-lg-12">
+                                    <div class="section-title">
+                                        <h4 class="title mb--20">Conference Description</h4>
+                                    </div>
+                                    <p>{{ event.description|safe  }} </p>
+                                </div>
+                                <!-- End Feture Box  -->
+
+                            </div>
+                        </div>
+                        <!-- End Course Feature Box  -->
+
+                        <!-- Start Intructor Area  -->
+                        <div class="rbt-participants-area mt--60">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="section-title text-start mb--20">
+                                        <span class="subtitle bg-secondary-opacity">Conference Speakers</span>
+                                        <h5 class="title">Conference Speakers</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-5">
+                                <!-- Start Single Team  -->
+                                {% for speaker in speakers %}
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="rbt-team team-style-default style-two rbt-hover">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                {% if speaker.speaker_image %}
+                                                    <img src="{{ speaker.speaker_image.url }}" class="w-100"  alt="Card image" />
+                                                {% endif%}
+                                            </div>
+                                            <div class="content">
+                                                <h6 class="title">{{ speaker.name }}</h6>
+                                                <h6 class="subtitle theme-gradient">{{ speaker.position }}</h6>
+                                                <ul class="social-icon social-default icon-naked mt--20">
+                                                    {% if speaker.facebook %}
+                                                    <li><a href="{{ speaker.facebook }}">
+                                                            <i class="feather-facebook"></i>
+                                                        </a>
+                                                    </li>
+                                                    {% endif%}
+                                                    {% if speaker.twitter %}
+                                                    <li><a href="{{ speaker.twitter }}">
+                                                            <i class="feather-twitter"></i>
+                                                        </a>
+                                                    </li>
+                                                    {% endif%}
+                                                    {% if speaker.linkedin %}
+                                                    <li><a href="{{ speaker.linkedin }}">
+                                                            <i class="feather-linkedin"></i>
+                                                        </a>
+                                                    </li>
+                                                    {% endif%}
+                                                    {% if speaker.website %}
+                                                    <li><a href="{{ speaker.website }}">
+                                                            <i class="feather-globe"></i>
+                                                        </a>
+                                                    </li>
+                                                    {% endif%}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <!-- End Single Team  -->
+                            </div>
+                        </div>
+                        <!-- End Intructor Area  -->
+
+                    </div>
+                    <div class="related-course mt--60">
+                        <div class="row">
+                            <div class="col-lg-12 mb--40">
+                                <div class="section-title text-start">
+                                    <span class="subtitle bg-secondary-opacity">Date and Time Breakdown</span>
+                                    <h5 class="title">Date and Time Breakdown</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-5">
+                            <!-- Start Single Card  -->
+                            {% for time in time_breakdown %}
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt--30" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                <div class="rbt-card event-grid-card variation-01 rbt-hover">
+                                    <div class="rbt-card-body">
+                                        <ul class="rbt-meta">
+                                            <li><i class="feather-clock"></i><b>{{ time.time}}</b></li>
+                                        </ul>
+                                        <p class="">{{ time.description}}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- End Single Card  -->
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mt_md--60 mt_sm--60">
+                    <div class="course-sidebar rbt-gradient-border sticky-top rbt-shadow-box course-sidebar-top">
+                        <div class="inner">
+
+                            <div class="content pt--30">
+
+                                <div class="buy-now-btn">
+                                    <a class="rbt-btn btn-border icon-hover w-100 d-block text-center" href="{% url 'conference:event-register' pk=event.pk %}">
+                                        <span class="btn-text">Register</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    </a>
+                                </div>
+
+                                <div class="rbt-widget-details has-show-more">
+                                    <ul class="has-show-more-inner-content rbt-course-details-list-wrapper">
+                                        <li><span>Start Date</span><span class="rbt-feature-value rbt-badge-5">{{ event.start_date }}</span>
+                                        </li>
+                                        <li><span>End Date</span><span class="rbt-feature-value rbt-badge-5">{{ event.end_date }}</span></li>
+                                        <li><span>Registration Deadline</span><span class="rbt-feature-value rbt-badge-5">{{ event.registration_deadline }}</span></li>
+                                        <li><span>Certificate</span><span class="rbt-feature-value rbt-badge-5">Yes</span></li>
+{#                                        <li><span>Conference Number</span><span class="rbt-feature-value rbt-badge-5">{{ event.id }}</span></li>#}
+                                    </ul>
+{#                                    <div class="rbt-show-more-btn">Show More</div>#}
+                                </div>
+
+                                <div class="social-share-wrapper mt--30 text-center">
+                                    <div class="rbt-post-share d-flex align-items-center justify-content-center">
+                                        <ul class="social-icon social-default transparent-with-border justify-content-center">
+                                            <li><a href="https://www.facebook.com/sharer/sharer.php?u={{request.built_absolute_url}}">
+                                                    <i class="feather-facebook"></i>
+                                                </a>
+                                            </li>
+                                             <li><a href="https://twitter.com/intent/tweet?url={{request.built_absolute_url}}&text=Check%20out%20this%20cool%20website%21" target="_blank">
+                                                    <i class="feather-twitter"></i>
+                                                </a>
+                                             </li>
+                                            <li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.built_absolute_url }}" target="_blank"">
+                                                    <i class="feather-linkedin"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <hr class="mt--20">
+                                    <div class="contact-with-us text-center">
+                                        <p>For details about the conference</p>
+                                        <p class="rbt-badge-2 mt--10 justify-content-center w-100"><i class="feather-phone mr--5"></i> Call Us: <a href="#"><strong>{{ event.follow_up }}</strong></a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="rbt-pricing-area bg-color-white rbt-section-gap">
+        <div class="container">
+            <div class="row g-5 mb--60">
+                <div class="section-title text-center">
+                    <h2 class="title">Register for this <span class="theme-gradient">Conference</span></h2>
+                </div>
+                <div class="pricing-billing-duration text-center">
+                    <ul>
+                        <li class="nav-item">
+                            <button class="nav-link yearly-plan-btn" type="button">Virtual Participation</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link monthly-plan-btn active" type="button">Physical Participation</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row g-5">
+                <!-- Start Single Pricing  -->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                    <div class="pricing-table">
+                        <div class="pricing-header">
+                            <h3 class="title">Early Bird</h3>
+                            <span class="rbt-badge mb--35">Early career epidemiologists</span>
+                            <div class="price-wrap">
+                                <div class="yearly-pricing" style="display: none;">
+                                    <span class="amount">₦15,000</span>
+                                </div>
+                                <div class="monthly-pricing" style="display: block;">
+                                    <span class="amount">₦20,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-btn">
+                            <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="{% url 'conference:event-register' pk=event.pk %}">
+                                <div class="icon-reverse-wrapper">
+                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Pricing  -->
+
+                <!-- Start Single Pricing  -->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                    <div class="pricing-table active">
+                        <div class="pricing-header">
+                            <h3 class="title">Late Registration</h3>
+                            <span class="rbt-badge mb--35">Early career epidemiologists</span>
+                            <div class="price-wrap">
+                                <div class="yearly-pricing" style="display: none;">
+                                    <span class="amount">₦20,000</span>
+                                </div>
+                                <div class="monthly-pricing" style="display: block;">
+                                    <span class="amount">₦25,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-btn">
+                            <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="{% url 'conference:event-register' pk=event.pk %}">
+                                <div class="icon-reverse-wrapper">
+                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Pricing  -->
+
+                <!-- Start Single Pricing  -->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                    <div class="pricing-table">
+                        <div class="pricing-header">
+                            <h3 class="title">On-Site Registration</h3>
+                            <span class="rbt-badge mb--35">Early career epidemiologists</span>
+                            <div class="price-wrap">
+                                <div class="yearly-pricing" style="display: none;">
+                                    <span class="amount">₦20,000</span>
+                                </div>
+                                <div class="monthly-pricing" style="display: block;">
+                                    <span class="amount">₦30,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-btn">
+                            <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="{% url 'conference:event-register' pk=event.pk %}">
+                                <div class="icon-reverse-wrapper">
+                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Start Single Pricing  -->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                    <div class="pricing-table">
+                        <div class="pricing-header">
+                            <h3 class="title">Early Bird</h3>
+                            <span class="rbt-badge mb--35">Established epidemiologist</span>
+                            <div class="price-wrap">
+                                <div class="yearly-pricing" style="display: none;">
+                                    <span class="amount">₦20,000</span>
+                                </div>
+                                <div class="monthly-pricing" style="display: block;">
+                                    <span class="amount">₦30,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-btn">
+                            <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="{% url 'conference:event-register' pk=event.pk %}">
+                                <div class="icon-reverse-wrapper">
+                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Pricing  -->
+                <!-- Start Single Pricing  -->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                    <div class="pricing-table">
+                        <div class="pricing-header">
+                            <h3 class="title">Late Registration</h3>
+                            <span class="rbt-badge mb--35">Established epidemiologist</span>
+                            <div class="price-wrap">
+                                <div class="yearly-pricing" style="display: none;">
+                                    <span class="amount">₦25,000</span>
+                                </div>
+                                <div class="monthly-pricing" style="display: block;">
+                                    <span class="amount">₦35,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-btn">
+                            <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="{% url 'conference:event-register' pk=event.pk %}">
+                                <div class="icon-reverse-wrapper">
+                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Pricing  -->
+                <!-- Start Single Pricing  -->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                    <div class="pricing-table">
+                        <div class="pricing-header">
+                            <h3 class="title">On-Site Registration</h3>
+                            <span class="rbt-badge mb--35">Established epidemiologist</span>
+                            <div class="price-wrap">
+                                <div class="yearly-pricing" style="display: none;">
+                                    <span class="amount">₦25,000</span>
+                                </div>
+                                <div class="monthly-pricing" style="display: block;">
+                                    <span class="amount">₦40,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-btn">
+                            <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="{% url 'conference:event-register' pk=event.pk %}">
+                                <div class="icon-reverse-wrapper">
+                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Pricing  -->
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

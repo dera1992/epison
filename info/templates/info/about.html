@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+    <!-- Start About Area  -->
+    <br> <br>
+    <div class="rbt-about-area about-style-1 bg-color-white ">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <div class="thumbnail-wrapper">
+                        <div class="thumbnail image-1">
+                            <img data-parallax='{"x": 0, "y": -20}' src="{% static "assets/images/about/about_01.jpg" %}" alt="Education Images">
+                        </div>
+                        <div class="thumbnail image-2 d-none d-xl-block">
+                            <img data-parallax='{"x": 0, "y": 60}' src="{% static "assets/images/about/about_01.jpg" %}" alt="Education Images">
+                        </div>
+                        <div class="thumbnail image-3 d-none d-md-block">
+                            <img data-parallax='{"x": 0, "y": 80}' src="{% static "assets/images/about/about_01.jpg" %}" style="width: 405px" alt="Education Images">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="inner pl--50 pl_sm--0 pl_md--0">
+                        <div class="section-title text-start">
+                            <span class="subtitle bg-coral-opacity">ABOUT EPISON</span>
+                            <h5 class="title">Brief Description</h5>
+                        </div>
+                        <p class="description mt--30">
+                            The Epidemiological Society of Nigeria was registered in 2010 and currently has over
+                            200 members. It is registered with the Corporate Affairs Commission of Nigeria (CAC/IT/No 41843) and enjoys a joint membership status with the International Epidemiological Association (IEA). The main goals of the society include:
+                        </p>
+                        <!-- Start Feature List  -->
+                        <div class="rbt-feature-wrapper mt--40">
+
+                            <div class="rbt-feature feature-style-1">
+                                <div class="icon bg-pink-opacity">
+                                    <i class="feather-heart"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <p class="feature-description">
+                                        To facilitate communication and co-operation among multidisciplinary
+                                        individuals engaged in practice, research and teaching of epidemiology throughout Nigeria.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="rbt-feature feature-style-1">
+                                <div class="icon bg-primary-opacity">
+                                    <i class="feather-book"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <p class="feature-description">
+                                        To engage in the development and use of epidemiological methods in all
+                                        fields of health including social, community and preventive medicine
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="rbt-feature feature-style-1">
+                                <div class="icon bg-coral-opacity">
+                                    <i class="feather-monitor"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <p class="feature-description">
+                                        To collect and analyze information on effective epidemiological methods/ strategies and approaches and to promote
+                                        such strategies through the exchange of information and ideas among the members.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="rbt-feature feature-style-1">
+                                <div class="icon bg-coral-opacity">
+                                    <i class="feather-monitor"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <p class="feature-description">
+                                        To encourage volunteerism in support of epidemiology and
+                                        provide the means by which it can be put into effect.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="rbt-feature feature-style-1">
+                                <div class="icon bg-coral-opacity">
+                                    <i class="feather-monitor"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <p class="feature-description">
+                                        To engage in other activities that would promote
+                                        the attainment of the aims and objectives set above.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End About Area  -->
+
+    <div class="rbt-team-area bg-color-white rbt-section-gapBottom">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-12 mb--60">
+                    <div class="section-title text-center">
+                        <h5 class="title">Our Members</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-5">
+
+                <!-- Start Single Team  -->
+                {% for pro in profile %}
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="rbt-team team-style-default style-three rbt-hover">
+                        <div class="inner">
+                            <div class="thumbnail">
+                                {% if pro.photo %}
+                                     <img src="{{ pro.photo.url }}" class=""  style="height: 300px" alt="" />
+                                {% endif%}
+                            </div>
+                            <div class="content">
+                                <h2 class="title">{{ pro.fullname }}</h2>
+                                <h6 class="subtitle theme-gradient">{{ pro.membership_type }}</h6>
+                                <span class="team-form">
+                                    <i class="feather-map-pin"></i>
+                                    <span class="location">{{ pro.user.email }}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Team  -->
+                {% empty %}
+                    <h5 style="text-align: center">No member yet...</h5>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

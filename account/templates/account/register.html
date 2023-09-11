@@ -1,0 +1,70 @@
+{% extends "auth_base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+     <div class="rbt-elements-area bg-color-white rbt-section-gaped">
+        <div class="container">
+            <div class="row gy-5 row--30">
+
+                <div class="col-lg-6" style="float:none;margin:auto;">
+                    <div class="rbt-contact-form contact-form-style-1 max-width-auto">
+                        <h5 class="title" style="text-align:center;">Register</h5>
+                        <p style="text-align:center;"><a href="{% url "home:home" %}"><i class="feather-home"></i></a></p>
+                        <form  id="signup_form" method="post" action="{% url 'register' %}">
+                            {% csrf_token %}
+                             <div class="">
+                                {% bootstrap_field profile_form.first_name %}
+                            </div>
+                             <div class="">
+                                {% bootstrap_field profile_form.last_name %}
+                            </div>
+                            <div class="">
+                                {% bootstrap_field user_form.email %}
+                            </div>
+
+                            <div class="">
+                                {% bootstrap_field user_form.username %}
+                            </div>
+
+                            <div class="" style="display: none;">
+                                {% bootstrap_field profile_form.membership_type %}
+                            </div>
+
+                            <div class="">
+                                {% bootstrap_field user_form.password %}
+                            </div>
+
+                            <div class="">
+                                {% bootstrap_field user_form.password2 %}
+                            </div>
+
+                            <div class="form-submit-group">
+                                <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">
+                                    <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">Register</span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                        </form>
+                        <br>
+                        <div class="row mb--30">
+
+                            <div class="">
+                                <p>Already have an account? <a class="rbt-btn-link" href="{% url "login" %}">Login</a></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

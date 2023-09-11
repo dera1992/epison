@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Detailed Abstract{% endblock %}
+
+{% block content %}
+     <div class="rbt-overlay-page-wrapper">
+        <div class="breadcrumb-image-container breadcrumb-style-max-width">
+            <div class="breadcrumb-image-wrapper">
+                <img src="assets/images/bg/bg-image-10.jpg" alt="Education Images">
+            </div>
+            <div class="breadcrumb-content-top text-center">
+                <ul class="meta-list justify-content-center mb--10">
+                    <li class="list-item">
+                        <div class="author-thumbnail">
+                            <img src="assets/images/testimonial/client-06.png" alt="blog-image">
+                        </div>
+                        <div class="author-info">
+                            <a href="#"><strong>{{ abstract.profile.fullname }}</strong></a> ">
+                        </div>
+                    </li>
+                    <li class="list-item">
+                        <i class="feather-clock"></i>
+                        <span>Date:{{ abstract.created }}</span>
+                    </li>
+                    <li class="list-item">
+                        <i class="feather-clock"></i>
+                        <span>DOI:{{ abstract.article_id }}</span>
+                    </li>
+                </ul>
+                <h6 class="title">{{ abstract.title }}</h6>
+            </div>
+        </div>
+
+        <div class="rbt-blog-details-area rbt-section-gapBottom breadcrumb-style-max-width">
+            <div class="blog-content-wrapper rbt-article-content-wrapper">
+
+                <div class="content">
+                    <h5>Name of Authors </h5>
+                    <p>{{ abstract.name_author }}</p>
+
+                    <h5>Corresponding Author Details</h5>
+                    <p>{{ abstract.corresponding_author }} ,{{ abstract.corresponding_author_phone }}, {{ abstract.corresponding_author_email }}</p>
+
+                    <h5>Background </h5>
+                    <p>{{ abstract.background |safe }}</p>
+
+                    <h5>Objective</h5>
+                    <p>{{ abstract.objective|safe  }}</p>
+
+                    <h5>Method</h5>
+                    <p>{{ abstract.method|safe  }}</p>
+
+                    <h5>Result</h5>
+                    <p>{{ abstract.result|safe  }}</p>
+
+                    <h5>Conclusion</h5>
+                    <p>{{ abstract.conclusion|safe  }}</p>
+
+                    <h5>Uploaded file</h5>
+                    <p><a href="{{ abstract.upload.url }}" target="_blank">View File</a></p>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

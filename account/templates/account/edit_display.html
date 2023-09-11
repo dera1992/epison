@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+     <!-- Start Card Style -->
+    <div class="rbt-page-banner-wrapper">
+        <!-- Start Banner BG Image  -->
+        <div class="rbt-banner-image"></div>
+        <!-- End Banner BG Image  -->
+    </div>
+    <div class="rbt-dashboard-area rbt-section-overlayping-top rbt-section-gapBottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="row g-5">
+                          {% include 'home/dash_side_bar.html' %}
+                        <div class="col-lg-9">
+                            <!-- Start Instructor Profile  -->
+                            <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
+                                <div class="content">
+                                    <div class="section-title">
+                                        <h4 class="rbt-title-style-3">My Profile</h4>
+                                    </div>
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15 mt--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">First Name</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ profile.first_name }}</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15 mt--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Last Name</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ profile.last_name }}</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15 mt--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Username</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ profile.user.username }}</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15 mt--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Email</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ profile.user.email }}</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15 mt--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Phone Number</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ profile.phone }}</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15 mt--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Address</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ profile.address }}</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">
+                                                Facebook
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ profile.facebook }}</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Twitter</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ profile.twitter }}</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Google</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ profile.google }}</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Linkedin</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ profile.linkedin }}</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15 mt--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Biography</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ profile.description }}</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+
+                                    <div class="col-12 mt--20">
+                                        <div class="rbt-form-group">
+                                            <a class="rbt-btn btn-gradient" href="{% url 'edit' %}">Update</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- End Instructor Profile  -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Card Style -->
+{% endblock %}

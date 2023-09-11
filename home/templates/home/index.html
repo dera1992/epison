@@ -1,0 +1,283 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Epison{% endblock %}
+
+{% block content %}
+     <!-- Start Banner Area  -->
+    <div class="rbt-banner-area rbt-banner-8 variation-03 section-bottom-overlay" id="home">
+        <div class="wrapper bg-color-secondary-alt">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="content">
+                            <div class="inner text-center">
+                                <div class="section-title">
+                                    <span class="subtitle bg-primary-opacity">Welcome!</span>
+                                </div>
+
+                                <h1 class="banner-title">Epidemiological Society of <span class="theme-gradient">Nigeria</span></h1>
+
+                                <p class="description has-medium-font-size mt--20">A multi-disciplinary team for any form of Epidemiological work
+                                </p>
+                                <br> <br> <br>
+
+{#                                <div class="slider-btn rbt-button-group justify-content-center">#}
+{#                                    <a class="rbt-btn btn-gradient rbt-switch-btn rbt-switch-y" href="{% url "abstract:create-abstract" %}">#}
+{#                                        <span data-text="Learn More About Us">Learn More About Us</span>#}
+{#                                    </a>#}
+{#                                </div>#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner Area  -->
+
+
+    <div class="rbt-about-area about-style-1 bg-color-white ">
+           <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 order-2 order-lg-1">
+                        <div class="inner">
+                            <div class="section-title text-start">
+                                <span class="subtitle bg-primary-opacity">About Epison</span>
+                                <p class="description mt--20">
+                                    <strong>The Epidemiological Society of Nigeria</strong>
+                                     was registered in 2010 and currently has over 200 members. It is registered with the Corporate Affairs Commission of Nigeria (CAC/IT/No 41843) and enjoys a joint membership status with the International Epidemiological Association (IEA).
+                                    The main goals of the society include:
+                                    To facilitate communication and co-operation among multidisciplinary individuals engaged in practice, research and teaching of epidemiology throughout Nigeria...
+                                </p>
+                                <div class="read-more-btn mt--40">
+                                    <a class="rbt-btn btn-gradient rbt-switch-btn rbt-switch-y" href="{% url "info:about_us" %}">
+                                        <span data-text="Read More">Read More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-2">
+                        <div class="content">
+                            <img src="{% static "assets/images/about/about-08.jpg" %}" alt="About Images">
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+
+    <!-- Start Call To Action  -->
+    <div class="rbt-callto-action-area bg-color-extra2 rbt-section-gap">
+        <div class="rbt-callto-action rbt-cta-default style-2">
+            <div class="container content-wrapper overflow-hidden">
+                <div class="row gy-5 align-items-center">
+                    <div class="col-lg-8">
+                        <div class="inner">
+                            <div class="content text-left">
+                                <h5 class="title" data-sal="slide-up" data-sal-duration="400" data-sal-delay="200">MEMBERSHIP / Become a member</h5>
+                                <p class="subtitle" data-sal="slide-up" data-sal-duration="400" data-sal-delay="300">
+                                    The Epidemiological Society of Nigeria (EPiSON) currently has membership strength of over 250,
+                                    spread over all the states in Nigeria. The membership is from various disciplines such as medicine, veterinary medicine, pharmacy, laboratory science, statistics, sociology, parasitology, nursing just to mention a few. The Society has a multi-disciplinary team for any form of Epidemiological work. .
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="call-to-btn text-start text-lg-end position-relative" data-sal="slide-up" data-sal-duration="400" data-sal-delay="400">
+                            <a class="rbt-btn rbt-switch-btn rbt-switch-y" href="{% url "membership_benefit" %}">
+                                <span data-text="Become a member">Become a member</span>
+                            </a>
+{#                            <div class="shape-text-image">#}
+{#                                <img class="rbt-rotatation-round" src="{% static "assets/images/shape/cta-text.png" %}" alt="Education Images">#}
+{#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- End Call To Action  -->
+
+        <!-- Start Event Area  -->
+        <div class="rbt-event-area rbt-section-gap bg-gradient-3">
+            <div class="container">
+                <div class="row mb--55">
+                    <div class="section-title text-center">
+                        <h5 class="title color-black">Upcoming Conference</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                    {% if event != None %}
+
+                        <div class="rbt-card event-grid-card variation-01 rbt-hover">
+                            <div class="rbt-card-img">
+                                <a href="{{ event.get_absolute_url }}">
+                                    {% if event.thumbnail  %}
+                                         <a href="{{ event.get_absolute_url }}"><img src="{{ event.thumbnail.url }}" class="" style="height: 300px" alt="" /></a>
+                                    {% endif%}
+                                    <div class="rbt-badge-3 bg-white" style="text-align: center">
+                                        <span>{{ event.start_date|date:"d M Y" }}</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="rbt-card-body">
+                                <ul class="rbt-meta">
+                                    <li><i class="feather-map-pin"></i>{{ event.address }}</li>
+                                    <li><i class="feather-clock"></i>{{ event.state}}</li>
+                                </ul>
+                                <h4 class="rbt-card-title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h4>
+
+                                <div class="read-more-btn">
+                                    <a class="rbt-btn btn-border hover-icon-reverse btn-sm radius-round" href="{{ event.get_absolute_url }}">
+                                        <span class="icon-reverse-wrapper">
+                    <span class="btn-text">Register</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                        <h5 style="text-align: center">No Event...</h5>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- End Event Area  -->
+        <div class="rbt-team-area bg-color-white rbt-section-gap">
+            <div class="container">
+                <div class="row mb--60">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <span class="subtitle bg-primary-opacity">Guest Speaker</span>
+                            <h5 class="title">Upcoming Conference Guest Speaker</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item-3-activation swiper rbt-arrow-between gutter-swiper-30">
+                <div class="swiper-wrapper">
+                    <!-- Start Single Testimonial  -->
+                    {% for speaker in speakers %}
+                    <div class="swiper-slide">
+                        <div class="single-slide">
+                            <div class="rbt-testimonial-box">
+                                <div class="inner bg-no-shadow bg-color-primary-opacity">
+                                    <div class="clint-info-wrapper">
+                                        <div class="thumb">
+                                            {% if speaker.speaker_image %}
+                                                <a href="{{ speaker.get_absolute_url }}">
+                                                <img src="{{ speaker.speaker_image.url }}" class="" style="width: 65px"  alt="" />
+                                                <a/>
+                                            {% endif%}
+                                        </div>
+                                        <div class="client-info">
+                                            <h5 class="title"><a href="{{ speaker.get_absolute_url }}">{{ speaker.name }}<a/></h5>
+                                            <span>{{ speaker.position }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Testimonial  -->
+                    {% empty %}
+                        <h5 style="text-align: center">No Speaker...</h5>
+                    {% endfor %}
+                </div>
+
+            </div>
+            </div>
+        </div>
+
+       <div class="rbt-team-area bg-color-white rbt-section-gapBottom">
+        <div class="container">
+            <div class="row mb--60">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <h5 class="title">Our Team Members</h5>
+                        <p class="description mt--10">Some of our memebers
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row row--15 mt_dec--30">
+                <!-- Start Single Team  -->
+                {% for pro in profile %}
+                <div class="col-lg-4 col-md-6 col-12 mt--30">
+                    <div class="rbt-team team-style-default rbt-hover-02">
+                        <div class="inner">
+                            <div class="thumbnail">
+                                {% if pro.photo %}
+                                     <img src="{{ pro.photo.url }}" class="" width="350px" height="232px" alt="" />
+                                {% endif%}
+                            </div>
+                            <div class="content">
+                                <h2 class="title">{{ pro.fullname }}</h2>
+                                <h6 class="subtitle theme-gradient">{{ pro.membership_type }}</h6>
+                                <span class="team-form">
+                        <i class="feather-map-pin"></i>
+                        <span class="location">{{ pro.user.email }}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                    <h5 style="text-align: center">No member yet...</h5>
+                {% endfor %}
+                <!-- End Single Team  -->
+            </div>
+        </div>
+    </div>
+
+         <!-- Start Blog Style -->
+    <div class="rbt-rbt-blog-area rbt-section-gap bg-color-extra2">
+        <div class="container">
+             <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <span class="subtitle bg-secondary-opacity">Latest Post</span>
+                        <h6 class="title"><a href="{% url "blog:blog_list" %}"> View All Post</a></h6>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- Start Card Area -->
+            <div class="row g-5">
+                <!-- Start Single Card  -->
+                {% for post in blog %}
+                <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="rbt-card variation-02 rbt-hover">
+                        <div class="rbt-card-img">
+                           <a href="{{ post.get_absolute_url }}">
+                                {% if post.image %}
+                                     <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" class="" width="350px" height="232px" alt="" /></a>
+                                {% endif%}
+                            </a>
+                        </div>
+                        <div class="rbt-card-body">
+                            <h5 class="rbt-card-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
+                            <div class="rbt-card-bottom">
+                                <a class="transparent-button" href="{{ post.get_absolute_url }}">Learn
+                                    More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                    <h5 style="text-align: center">No Post...</h5>
+                {% endfor %}
+                <!-- End Single Card  -->
+            </div>
+            <!-- End Card Area -->
+        </div>
+    </div>
+    <!-- End Blog Style -->
+{% endblock %}

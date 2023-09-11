@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+{% load blog_tags %}
+{% load humanize %}
+
+{% block title %}My Blog{% endblock %}
+
+{% block content %}
+
+    <div class="rbt-page-banner-wrapper">
+        <!-- Start Banner BG Image  -->
+        <div class="rbt-banner-image"></div>
+        <!-- End Banner BG Image  -->
+        <div class="rbt-banner-content">
+
+            <!-- Start Banner Content Top  -->
+            <div class="rbt-banner-content-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- Start Breadcrumb Area  -->
+                            <ul class="page-list">
+                                <li class="rbt-breadcrumb-item"><a href="{% url "home:home" %}">Home</a></li>
+                                <li>
+                                    <div class="icon-right"><i class="feather-chevron-right"></i></div>
+                                </li>
+                                <li class="rbt-breadcrumb-item active">News</li>
+                            </ul>
+                            <!-- End Breadcrumb Area  -->
+
+                            <div class="title-wrapper">
+                                <h1 class="title mb--0">All news</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Banner Content Top  -->
+
+        </div>
+    </div>
+
+    <div class="rbt-section-overlayping-top rbt-section-gapBottom">
+        <div class="container">
+            <div class="row row--30 gy-5">
+
+                <div class="col-lg-8">
+
+                    <!-- Start Card Area -->
+                    <div class="row g-5">
+
+                        {% for post in posts %}
+                        <!-- Start Single Card  -->
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="rbt-blog-grid rbt-card variation-02 rbt-hover">
+                                <div class="rbt-card-img">
+                                    <a href="{{ post.get_absolute_url }}">
+                                        {% if post.image %}
+                                             <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" class="" width="350px" height="232px" alt="" /></a>
+                                        {% endif%}
+                                    </a>
+                                </div>
+                                <div class="rbt-card-body">
+                                    <h5 class="rbt-card-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
+
+                                    <ul class="blog-meta">
+                                        <li><i class="feather-user"></i> {{ post.author }}</li>
+                                        <li><i class="feather-clock"></i> {{ post.publish }}</li>
+                                    </ul>
+                                    <p class="rbt-card-text">
+                                        {{ post.body|markdown|truncatewords_html:30 }}
+                                    </p>
+                                    <div class="rbt-card-bottom">
+                                        <a class="transparent-button" href="{{ post.get_absolute_url }}">Learn
+                                            More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Card  -->
+                        {% empty %}
+                            <h5 style="text-align: center">No Post...</h5>
+                        {% endfor %}
+
+
+
+                    </div>
+                    <!-- End Card Area -->
+
+{#                      {% include "pagination.html" with page=posts %}#}
+                     <div class="row">
+                        <div class="col-lg-12 mt--60">
+                            {% if posts.has_other_pages %}
+                              <ul class="rbt-pagination">
+                                {% if posts.has_previous %}
+                                  <li>
+                                      <a href="?page={{ posts.previous_page_number }}" aria-label="Previous"><i class="feather-chevron-left"></i></a>
+                                  </li>
+                                {% else %}
+                                  <li class="disabled"><a aria-label="Previous"><i class="feather-chevron-left"></i></a>/li>
+                                {% endif %}
+                                {% for i in posts.paginator.page_range %}
+                                  {% if posts.number == i %}
+                                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                  {% else %}
+                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+                                {% if posts.has_next %}
+                                  <li>
+                                      <a class="page-link" href="?page={{ posts.next_page_number }}" aria-label="Next"><i class="feather-chevron-right"></i></a>
+                                  </li>
+                                {% else %}
+                                  <li class="disabled"><i class="feather-chevron-right"></i></li>
+                                {% endif %}
+                              </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

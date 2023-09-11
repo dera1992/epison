@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+    <div class="rbt-conatct-area bg-gradient-11 rbt-section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center mb--60">
+                        <span class="subtitle bg-secondary-opacity">Contact Us</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
+                    <div class="rbt-address">
+                        <div class="icon">
+                            <i class="feather-headphones"></i>
+                        </div>
+                        <div class="inner">
+                            <h4 class="title">Prof Olusegun Afolabi</h4>
+                            <p>LOC Chairman</p>
+                            <p><a href="tel:+2348033885447">+2348033885447</a></p>
+                            <p><a href="mailto:temitopesegun@yahoo.com">temitopesegun@yahoo.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">
+                    <div class="rbt-address">
+                        <div class="icon">
+                            <i class="feather-mail"></i>
+                        </div>
+                        <div class="inner">
+                            <h4 class="title">Dr Adeleye Adeomi</h4>
+                            <p>Scientific Committee Chairman</p>
+                            <p><a href="tel:+2348036535077">+2348036535077</a></p>
+                            <p><a href="mailto:adeleyeadeomi@gmail.com">adeleyeadeomi@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate" data-sal="slide-up" data-sal-delay="250" data-sal-duration="800">
+                    <div class="rbt-address">
+                        <div class="icon">
+                            <i class="feather-map-pin"></i>
+                        </div>
+                        <div class="inner">
+                            <h4 class="title">Our Location</h4>
+                            <p>5678 Bangla Main Road, cities 580 <br> GBnagla, example 54786</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rbt-contact-address rbt-section-gapBottom">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="thumbnail">
+                        <img class="w-100 radius-6" src="{% static "assets/images/about/contact.jpg" %}" alt="Contact Images">
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="rbt-contact-form contact-form-style-1 max-width-auto">
+                        <form method="POST" action="."  novalidate="novalidate" enctype="multipart/form-data">
+                              {% csrf_token %}
+                            <div class="">
+                                {% bootstrap_field form.name show_label=False required="required" %}
+                            </div>
+                            <div class="">
+                                {% bootstrap_field form.email show_label=False required="required" %}
+                            </div>
+                            <div class="">
+                                {% bootstrap_field form.subject show_label=False required="required" %}
+                            </div>
+                            <div class="">
+                                {% bootstrap_field form.message show_label=False required="required" %}
+                            </div>
+
+                            <div class="form-submit-group">
+                                <button name="submit" type="submit" id="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">
+                                    <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">GET IN TOUCH</span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

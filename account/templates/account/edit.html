@@ -1,0 +1,120 @@
+{% extends "auth_base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <!-- Start Card Style -->
+    <div class="rbt-page-banner-wrapper">
+        <!-- Start Banner BG Image  -->
+        <div class="rbt-banner-image"></div>
+        <!-- End Banner BG Image  -->
+    </div>
+    <!-- Start Card Style -->
+    <div class="rbt-dashboard-area rbt-section-overlayping-top rbt-section-gapBottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="row g-5">
+                          {% include 'home/dash_side_bar.html' %}
+
+                        <div class="col-lg-9">
+                            <!-- Start Instructor Profile  -->
+                            <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
+                                <div class="content">
+
+                                    <div class="advance-tab-button mb--30">
+                                        <ul class="nav nav-tabs tab-button-style-2 justify-content-start" id="settinsTab-4" role="tablist">
+                                            <li role="presentation">
+                                                <a href="#" class="tab-button active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" role="tab" aria-controls="profile" aria-selected="true">
+                                                    <span class="title">Profile</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                                            <!-- Start Profile Row  -->
+                                            <form  id="signup_form" method="post" action="{% url 'edit' %}" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                 <div class="">
+                                                    {% bootstrap_field profile_form.first_name %}
+                                                </div>
+                                                 <div class="">
+                                                    {% bootstrap_field profile_form.last_name %}
+                                                </div>
+                                                <div class="">
+                                                    {% bootstrap_field user_form.email %}
+                                                </div>
+                                                <div class="" style="display: none;">
+                                                    {% bootstrap_field profile_form.membership_type %}
+                                                </div>
+                                                <div class="">
+                                                    {% bootstrap_field user_form.username %}
+                                                </div>
+
+                                                <div class="">
+                                                    {% bootstrap_field profile_form.phone %}
+                                                </div>
+
+                                                <div class="">
+                                                    {% bootstrap_field profile_form.address %}
+                                                </div>
+                                                <div class="">
+                                                    {% bootstrap_field profile_form.description %}
+                                                </div>
+
+                                                <div class="">
+                                                    {% bootstrap_field profile_form.facebook %}
+                                                </div>
+                                                 <div class="">
+                                                    {% bootstrap_field profile_form.twitter %}
+                                                </div>
+                                                 <div class="">
+                                                    {% bootstrap_field profile_form.google %}
+                                                </div>
+                                                 <div class="">
+                                                    {% bootstrap_field profile_form.linkedin %}
+                                                </div>
+                                                <div class="">
+                                                    {% bootstrap_field profile_form.photo %}
+                                                </div>
+                                                <div class="col-12 mt--20">
+                                                    <div class="rbt-form-group">
+                                                        <div class="form-submit-group">
+                                                            <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">
+                                                                <span class="icon-reverse-wrapper">
+                                                                    <span class="btn-text">Update Profile</span>
+                                                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <!-- End Profile Row  -->
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!-- End Instructor Profile  -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Card Style -->
+    <!-- End Card Style -->
+{% endblock %}

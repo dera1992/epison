@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Approved Research</title>
+</head>
+<body>
+
+{% autoescape off %}
+Hi, {{ user.username }} just created a research post,
+
+Please kindly go through the post and approve.
+Please click on the link below to view.
+
+<a href="http://{{ domain }}/{{ admin_url }}research/post/{{ id }}/change/">Approve</a>
+Regards,
+<a href="https://ncrc.org.ng/" target="_blank">NCRC</a>
+{% endautoescape %}
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="The Epidemiological Society of Nigeria was registered in 2010 and currently has over 200 members">
+    <meta name="keywords" content="Epison">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static "assets/images/favicons.ico" %}">
+
+    <!-- CSS
+	============================================ -->
+    <link rel="stylesheet" href="{% static "assets/css/vendor/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/vendor/slick.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/vendor/slick-theme.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/plugins/sal.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/plugins/feather.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/plugins/fontawesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/plugins/euclid-circulara.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/plugins/swiper.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/plugins/magnify.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/plugins/odometer.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/plugins/animation.css" %}">
+{#    <link rel="stylesheet" href="{% static "assets/css/plugins/bootstrap-select.min.css" %}">#}
+    <link rel="stylesheet" href="{% static "assets/css/plugins/jquery-ui.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/plugins/magnigy-popup.min.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/plugins/plyr.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/style.css" %}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body class="rbt-header-sticky">
+    <!-- Start Header Area -->
+    <header class="rbt-header rbt-header-10">
+        <div class="rbt-sticky-placeholder"></div>
+        <!-- Start Header Top  -->
+        <!-- End Header Top  -->
+        <div class="rbt-header-wrapper header-space-betwween header-sticky">
+            <div class="container-fluid">
+                <div class="mainbar-row rbt-navigation-center align-items-center">
+                    <div class="header-left rbt-header-content">
+                        <div class="header-info">
+                            <div class="logo">
+                                <a href="{% url "home:home" %}">
+                                    <img src="{% static "assets/images/logo/logo.png" %}" alt="Epison">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rbt-main-navigation d-none d-xl-block">
+                        <nav class="mainmenu-nav">
+                            <ul class="mainmenu">
+                                <li class="with-megamenu has-menu-child-item position-static">
+                                    <a href="{% url "home:home" %}">Home</a>
+                                </li>
+
+                                <li class="with-megamenu has-menu-child-item">
+                                    <a href="{% url "info:about_us" %}">About </a>
+                                </li>
+
+                                <li class="with-megamenu has-menu-child-item position-static">
+                                    <a href="{% url "conference:event-list" %}">Event </a>
+                                </li>
+
+                                <li class="with-megamenu has-menu-child-item position-static">
+                                    <a href="{% url "conference:event-gallery" %}">Gallery </a>
+                                </li>
+
+                                <li class="with-megamenu has-menu-child-item position-static">
+                                    <a href="{% url "info:contact" %}">Contact </a>
+                                </li>
+
+                                <li class="with-megamenu has-menu-child-item position-static">
+                                    <a href="{% url "abstract:abstract-list" %}">Abstract </a>
+                                </li>
+
+                                <li class="with-megamenu has-menu-child-item position-static">
+                                    <a href="{% url "blog:blog_list" %}">Blog </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="header-right">
+
+                        <!-- Navbar Icons -->
+                        {% if user.is_authenticated %}
+                        <ul class="quick-access">
+                            <li class="access-icon">
+                                <a class="search-trigger-active rbt-round-btn" href="#">
+                                    <i class="feather-search"></i>
+                                </a>
+                            </li>
+                            <li class="account-access rbt-user-wrapper right-align-dropdown d-none d-xl-block">
+                                <a ><i class="feather-user"></i>{{ request.user.profile.first_name }}</a>
+                                <div class="rbt-user-menu-list-wrapper">
+                                    <div class="inner">
+                                        <ul class="user-list-wrapper">
+                                            {% if user.is_superuser %}
+                                            <li>
+                                                <a href="{% url 'admin:index' %}">
+                                                    <i class="feather-home"></i>
+                                                    <span>Admin Dashboard</span>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+                                            <li>
+                                                <a href="{% url "home:dashboard" %}">
+                                                    <i class="feather-home"></i>
+                                                    <span>My Dashboard</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url "profile" %}">
+                                                    <i class="feather-bookmark"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url "abstract:create-abstract" %}">
+                                                    <i class="feather-book-open"></i>
+                                                    <span>Submit Abstract</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <hr class="mt--10 mb--10">
+                                        <ul class="user-list-wrapper">
+                                            <li>
+                                                <a href="{% url "logout" %}">
+                                                    <i class="feather-log-out"></i>
+                                                    <span>Logout</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="access-icon rbt-user-wrapper d-block d-xl-none">
+                                <a class="rbt-round-btn" href="#"><i class="feather-user"></i></a>
+                                <div class="rbt-user-menu-list-wrapper">
+                                    <div class="inner">
+                                        <div class="rbt-admin-profile">
+                                            <div class="admin-info">
+                                                <span class="name">{{ request.user.profile.first_name }}</span>
+                                            </div>
+                                        </div>
+                                        <ul class="user-list-wrapper">
+                                            {% if user.is_superuser %}
+                                            <li>
+                                                <a href="{% url 'admin:index' %}">
+                                                    <i class="feather-home"></i>
+                                                    <span>Admin Dashboard</span>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+                                            <li>
+                                                <a href="{% url "home:dashboard" %}">
+                                                    <i class="feather-home"></i>
+                                                    <span>My Dashboard</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url "profile" %}">
+                                                    <i class="feather-bookmark"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url "abstract:create-abstract" %}">
+                                                    <i class="feather-book-open"></i>
+                                                    <span>Submit Abstract</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <hr class="mt--10 mb--10">
+                                        <ul class="user-list-wrapper">
+                                            <li>
+                                                <a href="{% url "logout" %}">
+                                                    <i class="feather-log-out"></i>
+                                                    <span>Logout</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                        {% else %}
+                            <ul class="quick-access">
+                                <li class="dropdown"></li>
+                                <li class="log-icon"><a href="{% url "login" %}"><span style="font-weight:bold;">Login</span></a></li>
+                                <li class="log-icon"><a href="{% url "register" %}"><span style="font-weight:bold;">Register</span></a></li>
+                            </ul>
+                        {% endif %}
+
+                        <!-- Start Mobile-Menu-Bar -->
+                        <div class="mobile-menu-bar d-block d-xl-none">
+                            <div class="hamberger">
+                                <button class="hamberger-button rbt-round-btn">
+                                    <i class="feather-menu"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Start Mobile-Menu-Bar -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- Start Search Dropdown  -->
+            <div class="rbt-search-dropdown">
+                <div class="wrapper">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form action="#">
+                                <input type="text" placeholder="What are you looking for?">
+                                <div class="submit-btn">
+                                    <a class="rbt-btn btn-gradient btn-md" href="#">Search</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a class="rbt-close_side_menu" href="javascript:void(0);"></a>
+    </header>
+    <!-- Mobile Menu Section -->
+    <div class="popup-mobile-menu">
+        <div class="inner-wrapper">
+            <div class="inner-top">
+                <div class="content">
+                    <div class="logo">
+                        <a href="index-2.html">
+                            <img src="{% url "home:home" %}" alt="Education Logo Images">
+                        </a>
+                    </div>
+                    <div class="rbt-btn-close">
+                        <button class="close-button rbt-round-btn"><i class="feather-x"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="mainmenu-nav">
+                <ul class="mainmenu">
+                    <li class="position-static">
+                        <a href="{% url "home:home" %}">Home</a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url "info:about_us" %}">About </a>
+                    </li>
+
+                    <li class="  position-static">
+                        <a href="{% url "conference:event-list" %}">Event </a>
+                    </li>
+
+                    <li class="position-static">
+                        <a href="{% url "conference:event-gallery" %}">Gallery </a>
+                    </li>
+
+                    <li class="position-static">
+                        <a href="{% url "info:contact" %}">Contact </a>
+                    </li>
+
+                     <li class="position-static">
+                        <a href="{% url "abstract:abstract-list" %}">Abstract </a>
+                    </li>
+
+                    <li class="position-static">
+                        <a href="{% url "blog:blog_list" %}">Blog </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" style="text-align: center">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <!-- Start Side Vav -->
+    <!-- End Side Vav -->
+    <a class="close_side_menu" href="javascript:void(0);"></a>
+
+    <main class="rbt-main-wrapper">
+
+        {% block content %}
+
+        {% endblock %}
+
+        <div class="rbt-separator-mid">
+            <div class="container">
+                <hr class="rbt-separator m-0">
+            </div>
+        </div>
+        <br>
+        <!-- Start Footer aera -->
+        {% include 'footer.html' %}
+
+    </main>
+
+    <div class="rbt-progress-parent">
+        <svg class="rbt-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+
+   <!-- Modernizer JS -->
+    <script src="{% static "assets/js/vendor/modernizr.min.js" %}"></script>
+    <!-- jQuery JS -->
+    <script src="{% static "assets/js/vendor/jquery.js" %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static "assets/js/vendor/bootstrap.min.js" %}"></script>
+    <!-- sal.js -->
+    <script src="{% static "assets/js/vendor/sal.js" %}"></script>
+    <script src="{% static "assets/js/vendor/swiper.js" %}"></script>
+    <script src="{% static "assets/js/vendor/magnify.min.js" %}"></script>
+    <script src="{% static "assets/js/vendor/jquery-appear.js" %}"></script>
+    <script src="{% static "assets/js/vendor/odometer.js" %}"></script>
+    <script src="{% static "assets/js/vendor/backtotop.js" %}"></script>
+    <script src="{% static "assets/js/vendor/isotop.js" %}"></script>
+    <script src="{% static "assets/js/vendor/imageloaded.js" %}"></script>
+
+    <script src="{% static "assets/js/vendor/wow.js" %}"></script>
+    <script src="{% static "assets/js/vendor/waypoint.min.js" %}"></script>
+    <script src="{% static "assets/js/vendor/easypie.js" %}"></script>
+    <script src="{% static "assets/js/vendor/text-type.js" %}"></script>
+    <script src="{% static "assets/js/vendor/jquery-one-page-nav.js" %}"></script>
+{#    <script src="{% static "assets/js/vendor/bootstrap-select.min.js" %}"></script>#}
+    <script src="{% static "assets/js/vendor/jquery-ui.js" %}"></script>
+    <script src="{% static "assets/js/vendor/magnify-popup.min.js" %}"></script>
+    <script src="{% static "assets/js/vendor/paralax-scroll.js" %}"></script>
+    <script src="{% static "assets/js/vendor/paralax.min.js" %}"></script>
+    <script src="{% static "assets/js/vendor/countdown.js" %}"></script>
+    <script src="{% static "assets/js/vendor/plyr.js" %}"></script>
+    <!-- Main JS -->
+    <script src="{% static "assets/js/main.js" %}"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    {% block script %}
+
+    {% endblock %}
+
+
+</body>
+</html>

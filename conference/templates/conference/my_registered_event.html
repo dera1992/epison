@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Abstract{% endblock %}
+
+{% block content %}
+    <!-- Start Card Style -->
+    <div class="rbt-page-banner-wrapper">
+        <!-- Start Banner BG Image  -->
+        <div class="rbt-banner-image"></div>
+        <!-- End Banner BG Image  -->
+    </div>
+    <!-- Start Card Style -->
+
+     <!-- Start Card Style -->
+    <div class="rbt-dashboard-area rbt-section-overlayping-top rbt-section-gapBottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row g-5">
+                          {% include 'home/dash_side_bar.html' %}
+
+                        <div class="col-lg-9">
+                            <!-- Start Enrole Course  -->
+                            <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
+                                <div class="content">
+                                    <div class="section-title">
+                                        <h4 class="rbt-title-style-3">All my conference
+                                        </h4>
+                                    </div>
+
+                                    <div class="rbt-my-account-table table-responsive text-center">
+                                            <table class="table table-bordered">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Conference</th>
+                                                        <th>Start</th>
+                                                        <th>Reg ID</th>
+                                                        <th>Approved</th>
+                                                        <th>Download</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for event in my_ev %}
+                                                    <tr>
+                                                        <td>{{ event.event_registered.title }}</td>
+                                                        <td>{{ event.event_registered.start_date }}</td>
+                                                        <td>{{ event.payment_id }}</td>
+                                                        <td>{{ event.approved_payment }}</td>
+{#                                                        {% if event.approved_payment == True and event.event_registered.event_status.status == 'Finished' %}#}
+                                                        {% if event.approved_payment == True %}
+                                                        <td>
+                                                            <a class="rbt-btn btn-gradient btn-sm" href="{{ event.get_absolute_url }}">Download Cert</a>
+                                                        </td>
+                                                        {% else %}
+                                                            <td>Not Ready</td>
+                                                        {% endif %}
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                </div>
+                            </div>
+                            <!-- End Enrole Course  -->
+                            <div class="row">
+                            <div class="col-lg-12 mt--60">
+                                {% if my_ev.has_other_pages %}
+                                  <ul class="rbt-pagination">
+                                    {% if my_ev.has_previous %}
+                                      <li>
+                                          <a href="?page={{ my_ev.previous_page_number }}" aria-label="Previous"><i class="feather-chevron-left"></i></a>
+                                      </li>
+                                    {% else %}
+                                      <li class="disabled"><a><i class="feather-chevron-left"></i></a></li>
+                                    {% endif %}
+                                    {% for i in my_ev.paginator.page_range %}
+                                      {% if my_ev.number == i %}
+                                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                      {% else %}
+                                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                      {% endif %}
+                                    {% endfor %}
+                                    {% if my_ev.has_next %}
+                                      <li>
+                                          <a class="page-link" href="?page={{ my_ev.next_page_number }}" aria-label="Next"><i class="feather-chevron-right"></i></a>
+                                      </li>
+                                    {% else %}
+                                      <li class="disabled"><i class="feather-chevron-right"></i></li>
+                                    {% endif %}
+                                  </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Card Style -->
+{% endblock %}
+

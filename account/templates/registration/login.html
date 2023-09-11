@@ -1,0 +1,72 @@
+{% extends "auth_base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+
+    <div class="rbt-elements-area bg-color-white rbt-section-gaped">
+        <div class="container">
+            <div class="row gy-5 row--30">
+
+                <div class="col-lg-6" style="float:none;margin:auto;">
+                    <div class="rbt-contact-form contact-form-style-1 max-width-auto">
+                        <h5 class="title" style="text-align:center;">Login</h5>
+                        <p style="text-align:center;"><a href="{% url "home:home" %}"><i class="feather-home"></i></a></p>
+                         {% if form.errors %}
+                            <p style="text-align:center;">
+                                Your username and password didn't match.
+                                Please try again.
+                            </p >
+                        {% endif %}
+                        <form method="post" action=".">
+                            {% csrf_token %}
+                             <input type="hidden" name="next" value="{{ next }}">
+                            <div class="">
+                                {% bootstrap_field form.username show_label=False placeholder="Email" %}
+                            </div>
+                            <div class="">
+                                {% bootstrap_field form.password show_label=False placeholder="Password" %}
+                            </div>
+
+                            <div class="row mb--30">
+                                <div class="col-lg-6">
+                                    <div class="rbt-checkbox">
+                                        <input type="checkbox" id="rememberme" name="rememberme">
+                                        <label for="rememberme">Remember me</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="rbt-lost-password text-end">
+                                        <a class="rbt-btn-link" href="{% url "password_reset" %}">Forgotten password?</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb--30">
+                                <div class="col-lg-6">
+                                    <div class="">
+                                        <a class="rbt-btn-link" href="{% url "register" %}">Create Account</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-submit-group">
+                                <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">
+                                    <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">Log In</span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Events{% endblock %}
+
+{% block content %}
+   <div class="rbt-page-banner-wrapper">
+        <!-- Start Banner BG Image  -->
+        <div class="rbt-banner-image"></div>
+        <!-- End Banner BG Image  -->
+        <div class="rbt-banner-content">
+            <!-- Start Banner Content Top  -->
+            <div class="rbt-banner-content-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- Start Breadcrumb Area  -->
+                            <ul class="page-list">
+                                <li class="rbt-breadcrumb-item"><a href="{% url "home:home" %}">Home</a></li>
+                                <li>
+                                    <div class="icon-right"><i class="feather-chevron-right"></i></div>
+                                </li>
+                                <li class="rbt-breadcrumb-item active">All Event</li>
+                            </ul>
+                            <!-- End Breadcrumb Area  -->
+
+                            <div class=" title-wrapper">
+                                <h1 class="title mb--0">All Event</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Banner Content Top  -->
+        </div>
+    </div>
+
+    <div class="rbt-counterup-area rbt-section-overlayping-top rbt-section-gapBottom">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Start Single Event  -->
+                {% for event in events %}
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="rbt-card card-list-2 event-list-card variation-01 rbt-hover">
+                        <div class="rbt-card-img">
+                            {% if event.thumbnail  %}
+                                 <a href="{{ event.get_absolute_url }}"><img src="{{ event.thumbnail.url }}" class=""  alt="" /></a>
+                            {% endif%}
+                        </div>
+                        <div class="rbt-card-body">
+                            <ul class="rbt-meta">
+                                <li><i class="feather-calendar"></i>{{ event.start_date }}</li>
+                                <li><i class="feather-map-pin"></i>{{ event.state }}</li>
+                            </ul>
+                            <h4 class="rbt-card-title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h4>
+                            <div class="read-more-btn">
+                                <a class="rbt-btn btn-border hover-icon-reverse btn-sm radius-round" href="{{ event.get_absolute_url }}">
+                                    <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">Detail</span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Event  -->
+                 {% empty %}
+                        <h5 style="text-align: center">No Event...</h5>
+                    {% endfor %}
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 mt--60">
+                    {% if events.has_other_pages %}
+                      <ul class="rbt-pagination">
+                        {% if events.has_previous %}
+                          <li>
+                              <a href="?page={{ events.previous_page_number }}" aria-label="Previous"><i class="feather-chevron-left"></i></a>
+                          </li>
+                        {% else %}
+                          <li class="disabled"><a aria-label="Previous"><i class="feather-chevron-left"></i></a>/li>
+                        {% endif %}
+                        {% for i in events.paginator.page_range %}
+                          {% if events.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                          {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                          {% endif %}
+                        {% endfor %}
+                        {% if events.has_next %}
+                          <li>
+                              <a class="page-link" href="?page={{ events.next_page_number }}" aria-label="Next"><i class="feather-chevron-right"></i></a>
+                          </li>
+                        {% else %}
+                          <li class="disabled"><i class="feather-chevron-right"></i></li>
+                        {% endif %}
+                      </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}Edit Abstract{% endblock %}
+
+{% block content %}
+     <div class="rbt-create-course-area bg-color-white rbt-section-gap">
+            <div class="container">
+                <div class="row g-5">
+
+                    <div class="col-lg-8 mx-auto" >
+                        <div class="rbt-accordion-style rbt-accordion-01 rbt-accordion-06 accordion">
+                            <div class="accordion" id="tutionaccordionExamplea1">
+                                <div class="accordion-item card">
+                                    <h2 class="accordion-header card-header" id="accOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accCollapseOne" aria-expanded="true" aria-controls="accCollapseOne">Abstract form
+                                        </button>
+                                    </h2>
+                                    <div id="accCollapseOne" class="accordion-collapse collapse show" aria-labelledby="accOne" data-bs-parent="#tutionaccordionExamplea1">
+                                        <div class="accordion-body card-body">
+                                            {{ abstractForm.media }}
+                                             <form method="POST" action="." enctype="multipart/form-data" novalidate class="row row--15">
+                                            {% csrf_token %}
+                                            <!-- Start Course Field Wrapper  -->
+                                            <div class="rbt-course-field-wrapper rbt-default-form">
+                                                <div class="course-field mb--15">
+                                                    {% bootstrap_field abstractForm.title %}
+                                                </div>
+                                                <div class="course-field mb--20">
+                                                    {% bootstrap_field abstractForm.event %}
+                                                </div>
+                                                <div class="course-field mb--20">
+                                                    {% bootstrap_field abstractForm.name_author %}
+                                                </div>
+                                                <div class="course-field mb--20">
+                                                    {% bootstrap_field abstractForm.corresponding_author %}
+                                                </div>
+
+                                                <div class="course-field mb--20">
+                                                    {% bootstrap_field abstractForm.corresponding_author_phone %}
+                                                </div>
+                                                <div class="course-field mb--20">
+                                                    {% bootstrap_field abstractForm.corresponding_author_email %}
+                                                </div>
+                                                <div class="course-field mb--20">
+                                                    {% bootstrap_field abstractForm.background %}
+                                                </div>
+
+                                                <div class="course-field mb--15">
+                                                    {% bootstrap_field abstractForm.objective %}
+                                                </div>
+                                                <div class="course-field mb--15">
+                                                    {% bootstrap_field abstractForm.method %}
+                                                </div>
+
+                                                <div class="course-field mb--20">
+                                                    {% bootstrap_field abstractForm.result %}
+                                                </div>
+
+                                                <div class="course-field mb--20">
+                                                    {% bootstrap_field abstractForm.conclusion %}
+                                                </div>
+
+                                                <div class="course-field mb--20">
+                                                    {% bootstrap_field abstractForm.upload %}
+                                                </div>
+
+                                                <div class="mt--10 row g-5">
+                                                    <div class="col-lg-8">
+                                                        <button type="submit" class="btn-text rbt-btn btn-gradient hover-icon-reverse w-100 text-center">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Course Field Wrapper  -->
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+    $(document).ready(function() {
+      $('#id_event').select2();
+    });
+  </script>
+{% endblock %}
