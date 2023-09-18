@@ -25,6 +25,7 @@ class Profile(models.Model):
     photo = models.ImageField(upload_to='profile/%Y/%m/%d/',blank=True, default='profile/None/avater.png')
     email_confirmed = models.BooleanField(default=False)
     active = models.BooleanField(default=True, null=True, blank=True)
+    paid = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
         return self.first_name

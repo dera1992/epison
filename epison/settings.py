@@ -111,9 +111,9 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'rockflint',
-#         'USER': 'root',
-#         'PASSWORD': '',
+#         'NAME': env('DATABASE_NAME'),
+#         'USER': env('DATABASE_USER'),
+#         'PASSWORD': env('DATABASE_PASS'),
 #         'HOST': 'localhost',
 #         'PORT': '3306',
 #         'OPTION': {'init_command':"SET sql_mode='STRICT_TRANS_TABLE',"},

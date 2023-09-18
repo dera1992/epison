@@ -115,6 +115,7 @@
                                                     <span>My Dashboard</span>
                                                 </a>
                                             </li>
+                                            {% if user.profile.paid %}
                                             <li>
                                                 <a href="{% url "profile" %}">
                                                     <i class="feather-bookmark"></i>
@@ -127,6 +128,7 @@
                                                     <span>Submit Abstract</span>
                                                 </a>
                                             </li>
+                                            {% endif %}
                                         </ul>
                                         <hr class="mt--10 mb--10">
                                         <ul class="user-list-wrapper">
@@ -165,6 +167,7 @@
                                                     <span>My Dashboard</span>
                                                 </a>
                                             </li>
+                                            {% if user.profile.paid %}
                                             <li>
                                                 <a href="{% url "profile" %}">
                                                     <i class="feather-bookmark"></i>
@@ -177,6 +180,7 @@
                                                     <span>Submit Abstract</span>
                                                 </a>
                                             </li>
+                                            {% endif %}
                                         </ul>
                                         <hr class="mt--10 mb--10">
                                         <ul class="user-list-wrapper">

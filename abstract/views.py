@@ -20,9 +20,22 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from functools import wraps
 
 
 User = get_user_model()
+
+
+def paid_required(view_func):
+    @wraps(view_func)
+    def _wrapped_view(request, *args, **kwargs):
+        if request.user.profile.paid:
+            return view_func(request, *args, **kwargs)
+        else:
+            # You can customize the redirect or error handling here
+            return redirect('access_denied')
+    return _wrapped_view
+
 
 @login_required
 def create_abstract(request):

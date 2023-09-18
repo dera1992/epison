@@ -25,9 +25,11 @@
                                 <li class="rbt-breadcrumb-item active">All Abstract</li>
                             </ul>
                             <!-- End Breadcrumb Area  -->
+                            {% if user.profile.paid %}
                             <div class="rbt-form-group" style="float: right">
                                     <a class="rbt-btn btn-gradient" href="{% url "abstract:create-abstract" %}">Submit Abstract</a>
                                 </div>
+                            {% endif %}
 
                         </div>
                     </div>

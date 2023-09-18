@@ -247,22 +247,26 @@
                             <h3 class="title">Early Bird</h3>
                             <span class="rbt-badge mb--35">Early career epidemiologists</span>
                             <div class="price-wrap">
+
                                 <div class="yearly-pricing" style="display: none;">
                                     <span class="amount">₦15,000</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
                                     <span class="amount">₦20,000</span>
                                 </div>
+
                             </div>
                         </div>
                         <div class="pricing-btn">
+                            {% if user.profile.paid %}
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="{% url 'conference:event-register' pk=event.pk %}">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-text">Register</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 </div>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -275,22 +279,26 @@
                             <h3 class="title">Late Registration</h3>
                             <span class="rbt-badge mb--35">Early career epidemiologists</span>
                             <div class="price-wrap">
+
                                 <div class="yearly-pricing" style="display: none;">
                                     <span class="amount">₦20,000</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
                                     <span class="amount">₦25,000</span>
                                 </div>
+
                             </div>
                         </div>
                         <div class="pricing-btn">
+                            {% if user.profile.paid %}
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="{% url 'conference:event-register' pk=event.pk %}">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-text">Register</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 </div>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -309,16 +317,19 @@
                                 <div class="monthly-pricing" style="display: block;">
                                     <span class="amount">₦30,000</span>
                                 </div>
+
                             </div>
                         </div>
                         <div class="pricing-btn">
+                            {% if user.profile.paid %}
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="{% url 'conference:event-register' pk=event.pk %}">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-text">Register</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 </div>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -335,16 +346,19 @@
                                 <div class="monthly-pricing" style="display: block;">
                                     <span class="amount">₦30,000</span>
                                 </div>
+
                             </div>
                         </div>
                         <div class="pricing-btn">
+                            {% if user.profile.paid %}
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="{% url 'conference:event-register' pk=event.pk %}">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-text">Register</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 </div>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -365,13 +379,15 @@
                             </div>
                         </div>
                         <div class="pricing-btn">
+                            {% if user.profile.paid %}
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="{% url 'conference:event-register' pk=event.pk %}">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-text">Register</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 </div>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -389,16 +405,19 @@
                                 <div class="monthly-pricing" style="display: block;">
                                     <span class="amount">₦40,000</span>
                                 </div>
+
                             </div>
                         </div>
                         <div class="pricing-btn">
+                            {% if user.profile.paid %}
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="{% url 'conference:event-register' pk=event.pk %}">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-text">Register</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 </div>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

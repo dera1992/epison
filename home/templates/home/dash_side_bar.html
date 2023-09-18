@@ -14,9 +14,11 @@
                         <ul class="dashboard-mainmenu rbt-default-sidebar-list">
                             <li><a href="{% url "home:dashboard" %}"><i class="feather-home"></i><span>Dashboard</span></a></li>
                             <li><a href="{% url "profile" %}"><i class="feather-user"></i><span>My Profile</span></a></li>
+                            {% if user.profile.paid %}
                             <li><a href="{% url "conference:my-event" %}"><i class="feather-book-open"></i><span>My Conference </span></a></li>
                             <li><a href="{% url "abstract:my-abstract" %}"><i class="feather-bookmark"></i><span>My Abstract</span></a></li>
                             <li><a href="{% url "abstract:create-abstract" %}"><i class="feather-volume-2"></i><span>Create Abstract</span></a></li>
+                            {% endif %}
                         </ul>
                     </nav>
 
